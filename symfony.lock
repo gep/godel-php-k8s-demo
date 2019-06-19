@@ -90,6 +90,9 @@
     "ocramius/proxy-manager": {
         "version": "2.2.2"
     },
+    "probablyrational/random-name-generator": {
+        "version": "v2.2.2"
+    },
     "psr/cache": {
         "version": "1.0.1"
     },
