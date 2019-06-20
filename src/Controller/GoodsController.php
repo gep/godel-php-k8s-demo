@@ -27,7 +27,7 @@ class GoodsController extends AbstractController
     }
 
     /**
-     * @Route("/goods/create/{amount}", name="create_goods")
+     * @Route("/goods/create/{amount}", name="create_goods", requirements={"amount"="\d+"}, methods={"PUT"})
      * @param int $amount
      * @return JsonResponse
      */
