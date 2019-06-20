@@ -3,13 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Good;
+use App\Repository\GoodRepository;
 use ProbablyRational\RandomNameGenerator\All;
-use ProbablyRational\RandomNameGenerator\Alliteration;
-use ProbablyRational\RandomNameGenerator\Sketch;
-use ProbablyRational\RandomNameGenerator\Vgng;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 
@@ -18,12 +15,13 @@ class GoodsController extends AbstractController
     /**
      * @Route("/goods", name="goods")
      */
-    public function index(): Response
+    public function index(): JsonResponse
     {
-
+        /** @var GoodRepository $repository */
+        $repository = $this->getDoctrine()->getRepository(Good::class);
 
         return $this->json([
-            'message' => 'Welcome to your new controller!',
+            'goods' => $repository->getGoods(),
             'path' => 'src/Controller/GoodsController.php',
         ]);
     }
@@ -31,19 +29,11 @@ class GoodsController extends AbstractController
     /**
      * @Route("/goods/create/{amount}", name="create_goods")
      * @param int $amount
-     * @return Response
+     * @return JsonResponse
      */
-    public function createGoods(int $amount): Response
+    public function createGoods(int $amount): JsonResponse
     {
-        $namesGenerator = new All(
-            [
-                new Alliteration(1),
-                new Vgng(1),
-                new Sketch(1),
-            ]
-        );
-
-
+        $namesGenerator = All::create();
         $entityManager = $this->getDoctrine()->getManager();
 
         foreach (range(1, $amount) as $itemNumber) {
@@ -56,7 +46,6 @@ class GoodsController extends AbstractController
 
         // actually executes the queries (i.e. the INSERT query)
         $entityManager->flush();
-
 
         return $this->json(['message' => sprintf("%d goods created", $amount)]);
     }

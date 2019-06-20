@@ -14,10 +14,26 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class GoodRepository extends ServiceEntityRepository
 {
+    protected const LIMIT_DEFAULT = 5000;
+
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Good::class);
     }
+
+    /**
+     * Get all goods
+     * @param int $limit
+     * @return iterable
+     */
+    public function getGoods($limit = self::LIMIT_DEFAULT): iterable
+    {
+        return $this->createQueryBuilder('g')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getArrayResult();
+    }
+
 
     // /**
     //  * @return Good[] Returns an array of Good objects
