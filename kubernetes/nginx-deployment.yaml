@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: godel-nginx
+  labels:
+    app: godel-nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: godel-nginx
+  template:
+    metadata:
+      labels:
+        app: godel-nginx
+    spec:
+      containers:
+        - image: gcr.io/dark-hall-244312/godel-nginx
+          name: "godel-php-k8s-demo-nginx"
+          ports:
+            - containerPort: 80
+              name: nginx

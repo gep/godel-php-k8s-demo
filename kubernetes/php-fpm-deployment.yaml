@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-fpm
+  labels:
+    app: php-fpm
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: php-fpm
+  template:
+    metadata:
+      labels:
+        app: php-fpm
+    spec:
+      containers:
+        - image: gcr.io/dark-hall-244312/godel-php-fpm
+          name: godel-php-k8s-demo-php-fpm
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: mysql
+                  key: url
+            - name: APP_ENV
+              value: prod
+          ports:
+            - containerPort: 9000
+              name: php-fpm
+#          volumeMounts:
+#            - name: php-persistent-storage
+#              mountPath: /var/www/html
+#      volumes:
+#        - name: php-persistent-storage
+#          persistentVolumeClaim:
+#            claimName: php-fpm-volumeclaim

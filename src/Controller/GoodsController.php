@@ -7,15 +7,26 @@ use App\Repository\GoodRepository;
 use ProbablyRational\RandomNameGenerator\All;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 
 class GoodsController extends AbstractController
 {
+
+    /**
+     * @Route("/", name="index")
+     * @return Response
+     */
+    public function index(): Response
+    {
+        return new Response('Goods store! Seems to be working. :)');
+    }
+
     /**
      * @Route("/goods", name="goods")
      */
-    public function index(): JsonResponse
+    public function getGoods(): JsonResponse
     {
         /** @var GoodRepository $repository */
         $repository = $this->getDoctrine()->getRepository(Good::class);
