@@ -1,2 +1,2 @@
-# godel-php-k8s-demo
+# Godel PHP Kubernetes demo
 Demo PHP kubernetes project
