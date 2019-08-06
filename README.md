@@ -2,12 +2,12 @@
 Demo PHP kubernetes project.
 This project is set up using kubernetes on Google cloud
 
-##Installation
+## Installation
 
-###Vendors installation
+### Vendors installation
 Run `composer install` locally
 
-###Creating kubernetes cluster in google cloud
+### Creating kubernetes cluster in google cloud
 ```
 gcloud container clusters create [cluster_name] \
     --scopes "cloud-platform" \
@@ -18,7 +18,7 @@ gcloud container clusters create [cluster_name] \
     --zone [YOUR_GCP_ZONE]
 ```
 
-###Create docker images published in google cloud
+### reate docker images published in google cloud
 Mysql:
 ```bash
 PROJECT_ID=google_cloud_project_id ./kubernetes/bin/docker-publish-mysql.sh
@@ -35,7 +35,7 @@ PROJECT_ID=google_cloud_project_id ./kubernetes/bin/docker-publish-php-fpm.sh
 Then edit deployment yaml files to point to the right image:
 For `kuberneters/php-fpm-deployment.yaml` replace `dark-hall-244312` with your google project ID. The same for other deployment files.
 
-###Further kubernetes objects creations
+### Further kubernetes objects creations
 
 * Run `kubectl create secret generic mysql --from-literal url=mysql://k8s-demo:42@mysql:3306/k8s-demo` to create a database secret for php workers
 * Then create mysql volume: `kubectl create -f kubernetes/mysql-volume.yaml`
@@ -46,7 +46,7 @@ For `kuberneters/php-fpm-deployment.yaml` replace `dark-hall-244312` with your g
 * Nginx nodeport (for Ingress usage): `kubectl create -f kubernetes/nginx-nodeport.yaml`
 * And finally application ingress to be able to access the app from the internet: `kubectl create -f kubernetes/app-ingress.yaml`
 
-###Application usage
+### pplication usage
 Then access the app from the internet using the ingress IP address:
 ```bash
 ✗ kubectl get ingresses
