@@ -37,7 +37,7 @@ For `kuberneters/php-fpm-deployment.yaml` replace `dark-hall-244312` with your g
 
 ### Further kubernetes objects creations
 
-* Run `kubectl create secret generic mysql --from-literal url=mysql://k8s-demo:42@mysql:3306/k8s-demo` to create a database secret for php workers
+* Run `kubectl create secret generic mysql --from-literal url=mysql://godel-k8s-demo:42@mysql:3306/godel-k8s-demo` to create a database secret for php workers
 * Then create mysql volume: `kubectl create -f kubernetes/mysql-volume.yaml`
 * Mysql service: `kubectl create -f kubernetes/mysql-deployment.yaml`
 * PHP fpm deployment: `kubectl create -f kubernetes/php-fpm-deployment.yaml`
