@@ -46,7 +46,7 @@ For `kuberneters/php-fpm-deployment.yaml` replace `dark-hall-244312` with your g
 * Nginx nodeport (for Ingress usage): `kubectl create -f kubernetes/nginx-nodeport.yaml`
 * And finally application ingress to be able to access the app from the internet: `kubectl create -f kubernetes/app-ingress.yaml`
 
-### Application usage
+## Application usage
 Then access the app from the internet using the ingress IP address:
 ```bash
 ✗ kubectl get ingresses
