@@ -18,7 +18,7 @@ gcloud container clusters create [cluster_name] \
     --zone [YOUR_GCP_ZONE]
 ```
 
-### reate docker images published in google cloud
+### Create docker images published in google cloud
 Mysql:
 ```bash
 PROJECT_ID=google_cloud_project_id ./kubernetes/bin/docker-publish-mysql.sh
@@ -46,7 +46,7 @@ For `kuberneters/php-fpm-deployment.yaml` replace `dark-hall-244312` with your g
 * Nginx nodeport (for Ingress usage): `kubectl create -f kubernetes/nginx-nodeport.yaml`
 * And finally application ingress to be able to access the app from the internet: `kubectl create -f kubernetes/app-ingress.yaml`
 
-### pplication usage
+### Application usage
 Then access the app from the internet using the ingress IP address:
 ```bash
 ✗ kubectl get ingresses
