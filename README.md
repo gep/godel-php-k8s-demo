@@ -31,6 +31,10 @@ And the same for php-fpm:
 ```bash
 PROJECT_ID=google_cloud_project_id ./kubernetes/bin/docker-publish-php-fpm.sh
 ```
+For migration:
+```bash
+PROJECT_ID=google_cloud_project_id ./kubernetes/bin/docker-publish-php-cli-run-migrations.sh
+```
 
 Then edit deployment yaml files to point to the right image:
 For `kuberneters/php-fpm-deployment.yaml` replace `dark-hall-244312` with your google project ID. The same for other deployment files.
@@ -44,6 +48,7 @@ For `kuberneters/php-fpm-deployment.yaml` replace `dark-hall-244312` with your g
 * PHP service: `kubectl create -f kubernetes/php-fpm-service.yaml`
 * Nginx deployment: `kubectl create -f kubernetes/nginx-deployment.yaml`
 * Nginx nodeport (for Ingress usage): `kubectl create -f kubernetes/nginx-nodeport.yaml`
+* Run migrations for the database: `kubectl create -f kubernetes/php-migrations-job.yaml`
 * And finally application ingress to be able to access the app from the internet: `kubectl create -f kubernetes/app-ingress.yaml`
 
 ## Application usage
