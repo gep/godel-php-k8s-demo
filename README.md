@@ -76,3 +76,6 @@ curl -X PUT \
   -H 'Postman-Token: a38c3d1d-d1af-4890-8fb4-8c8f0c10417e'
 ```
 
+### Postman collection
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/abe60f37d86393256e88)
+
