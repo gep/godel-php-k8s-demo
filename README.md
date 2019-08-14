@@ -79,3 +79,77 @@ curl -X PUT \
 ### Postman collection
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/abe60f37d86393256e88)
 
+Get goods response example:
+```json
+{
+    "goods": [
+        {
+            "id": 1,
+            "name": "thankful-ostrich",
+            "price": "107.30",
+            "created_at": {
+                "date": "2019-08-07 07:15:55.000000",
+                "timezone_type": 3,
+                "timezone": "UTC"
+            },
+            "updated_at": {
+                "date": "2019-08-07 07:15:55.000000",
+                "timezone_type": 3,
+                "timezone": "UTC"
+            }
+        },
+        {
+            "id": 2,
+            "name": "forgiving-bengal",
+            "price": "12.98",
+            "created_at": {
+                "date": "2019-08-07 07:15:55.000000",
+                "timezone_type": 3,
+                "timezone": "UTC"
+            },
+            "updated_at": {
+                "date": "2019-08-07 07:15:55.000000",
+                "timezone_type": 3,
+                "timezone": "UTC"
+            }
+        },
+        {
+            "id": 3,
+            "name": "healthy-kouprey",
+            "price": "31.55",
+            "created_at": {
+                "date": "2019-08-07 07:15:55.000000",
+                "timezone_type": 3,
+                "timezone": "UTC"
+            },
+            "updated_at": {
+                "date": "2019-08-07 07:15:55.000000",
+                "timezone_type": 3,
+                "timezone": "UTC"
+            }
+        },
+        {
+            "id": 40,
+            "name": "generous-piranha",
+            "price": "47.39",
+            "created_at": {
+                "date": "2019-08-07 07:15:55.000000",
+                "timezone_type": 3,
+                "timezone": "UTC"
+            },
+            "updated_at": {
+                "date": "2019-08-07 07:15:55.000000",
+                "timezone_type": 3,
+                "timezone": "UTC"
+            }
+        }
+    ],
+    "path": "src/Controller/GoodsController.php"
+}
+```
+Put 40 goods response example:
+```json
+{
+    "message": "40 goods created"
+}
+```
